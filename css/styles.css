@@ -142,3 +142,117 @@ h1,h2,h3{text-transform:uppercase;letter-spacing:.005em;line-height:.9}
 @media(max-width:620px){
 .services-hero{padding:75px 0 65px}.services-hero h1{font-size:4.3rem}.services-hero p{font-size:.92rem}.services-intro{margin-bottom:32px}.services-intro h2{font-size:3.35rem}.service-tile{min-height:125px;grid-template-columns:52px 1fr 30px;padding:20px 17px;gap:12px}.tile-no{font-size:2.8rem}.tile-content strong{font-size:1.55rem}.tile-content small{font-size:.7rem}.tile-arrow{width:30px;height:30px}.service-cta-inner{grid-template-columns:1fr;padding:55px 0}.service-cta h2{font-size:3.3rem}.quote-hero{padding:72px 0 64px}.quote-hero h1{font-size:4.4rem}.quote-section{padding:25px 0 70px}.quote-side{padding:36px 25px}.quote-side h2{font-size:3.8rem}.quote-card{padding:30px 20px}.quote-card h2{font-size:3rem}.quote-submit{display:grid;grid-template-columns:1fr}.quote-submit .btn{width:100%}
 }
+
+/* V4 refinements — stronger service cards + compact quote experience */
+/* Remove the red active underline from the Services navigation item. */
+.nav-links a.active:not(.nav-cta):after{display:none}
+
+/* Services: bold black/red modular cards, no emoji/icon dependency. */
+.service-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.service-tile{
+  min-height:184px;
+  grid-template-columns:78px 1fr auto;
+  gap:22px;
+  padding:26px 28px;
+  background:#fff;
+  border:1px solid #d9dbdd;
+  border-radius:0;
+  box-shadow:0 7px 0 #111316;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease;
+}
+.service-tile:nth-child(odd){background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 7px 0 var(--red)}
+.service-tile:nth-child(even){background:#fff;color:var(--ink)}
+.service-tile:before{width:7px;top:0;bottom:0;transform:scaleY(1);background:var(--red)}
+.service-tile:after{content:'';position:absolute;right:26px;bottom:23px;width:34px;height:2px;background:var(--red);transition:width .2s ease}
+.service-tile:hover,.service-tile:focus-visible{transform:translateY(-5px);box-shadow:0 13px 0 var(--red);border-color:var(--red);outline:none}
+.service-tile:hover:after,.service-tile:focus-visible:after{width:54px}
+.tile-no{position:relative;z-index:1;font:800 3.8rem/.78 'Barlow Condensed',sans-serif;color:var(--red);letter-spacing:-.04em}
+.service-tile:nth-child(odd) .tile-no{color:#fff}
+.tile-content{align-self:center;display:grid;gap:7px;position:relative;z-index:1}
+.tile-content strong{font:800 1.9rem/.9 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.tile-content small{font-size:.8rem;color:#747980;line-height:1.35;max-width:340px}
+.service-tile:nth-child(odd) .tile-content small{color:#b7bbc0}
+.tile-arrow{align-self:start;margin-top:3px;width:42px;height:42px;border:2px solid var(--red);border-radius:0;display:block;position:relative;color:transparent;font-size:0;transition:.2s;flex:0 0 auto}
+.tile-arrow:before{content:'';position:absolute;width:15px;height:2px;background:var(--red);right:8px;top:19px}
+.tile-arrow:after{content:'';position:absolute;width:8px;height:8px;border-top:2px solid var(--red);border-right:2px solid var(--red);transform:rotate(45deg);right:8px;top:15px}
+.service-tile:nth-child(odd) .tile-arrow{background:var(--red);border-color:var(--red)}
+.service-tile:nth-child(odd) .tile-arrow:before{background:#fff}
+.service-tile:nth-child(odd) .tile-arrow:after{border-color:#fff}
+.service-tile:hover .tile-arrow{transform:translateX(4px)}
+
+/* Compact quote page: preserve the black brand panel but remove excess vertical height. */
+.quote-hero{padding:58px 0 52px}
+.quote-hero h1{font-size:clamp(3.7rem,7vw,6.4rem)}
+.quote-hero p{margin-top:14px;max-width:590px}
+.quote-section{padding:48px 0 70px}
+.quote-layout{grid-template-columns:.78fr 1.22fr;box-shadow:0 22px 60px rgba(17,19,22,.11)}
+.quote-side{min-height:0;padding:34px 34px 30px}
+.quote-side h2{font-size:clamp(3rem,4.5vw,4.5rem);margin:10px 0 14px}
+.quote-side p{font-size:.86rem;line-height:1.45}
+.quote-points{gap:10px;margin:24px 0}
+.quote-points>div{grid-template-columns:34px 1fr;gap:9px;padding-bottom:11px}
+.quote-points span{font-size:1.1rem}
+.quote-points p{font-size:.78rem}
+.quote-contact{padding-top:15px}
+.quote-contact a{font-size:.8rem}
+.quote-card{padding:32px 36px 30px}
+.quote-card h2{font-size:clamp(2.5rem,3.7vw,3.6rem)}
+.quote-mark{width:42px;height:42px}
+.quote-rule{margin:18px 0 0}
+.form-section{padding:20px 0}
+.form-section-title{gap:11px;margin-bottom:14px}
+.form-section-title>span{font-size:1rem}
+.form-section-title strong{font-size:1.2rem}
+.form-section-title small{font-size:.68rem}
+.quote-card .form-grid{gap:11px}
+.quote-card .field{gap:5px}
+.quote-card .field label{font-size:.63rem}
+.quote-card .field input,.quote-card .field textarea,.quote-card .field select{padding:10px 2px;font-size:.9rem}
+.quote-card .field textarea{min-height:88px}
+.quote-submit{padding-top:20px;gap:14px}
+.quote-submit strong{font-size:1rem}
+.quote-submit small{font-size:.63rem}
+
+@media(max-width:900px){
+  .service-tiles{grid-template-columns:1fr;gap:16px}
+  .service-tile{min-height:158px}
+  .quote-layout{grid-template-columns:1fr;box-shadow:none}
+  .quote-side{display:block;padding:28px 25px 24px}
+  .quote-side:after{font-size:10rem;bottom:-42px}
+  .quote-side-top{max-width:650px}
+  .quote-points{grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 16px}
+  .quote-points>div{grid-template-columns:1fr;gap:3px;padding:0;border-bottom:0}
+  .quote-points p{font-size:.7rem;line-height:1.25}
+  .quote-contact{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .quote-contact small{width:100%}
+}
+@media(max-width:620px){
+  .service-tile{min-height:145px;grid-template-columns:56px 1fr 36px;padding:20px 18px;gap:12px;box-shadow:0 5px 0 #111316}
+  .service-tile:nth-child(odd){box-shadow:0 5px 0 var(--red)}
+  .tile-no{font-size:3rem}
+  .tile-content strong{font-size:1.55rem}
+  .tile-content small{font-size:.68rem}
+  .tile-arrow{width:34px;height:34px}
+  .tile-arrow:before{width:12px;right:7px;top:15px}
+  .tile-arrow:after{width:7px;height:7px;right:7px;top:11px}
+  .service-tile:after{right:18px;bottom:16px;width:28px}
+  .quote-hero{padding:45px 0 38px}
+  .quote-hero h1{font-size:3.7rem}
+  .quote-section{padding:18px 0 48px}
+  .quote-side{padding:24px 20px 20px}
+  .quote-side h2{font-size:3.05rem}
+  .quote-side p{font-size:.78rem}
+  .quote-points{gap:8px;margin:18px 0 14px}
+  .quote-points span{font-size:1rem}
+  .quote-points p{font-size:.62rem}
+  .quote-contact{gap:8px}
+  .quote-contact a{font-size:.72rem}
+  .quote-card{padding:24px 18px 22px}
+  .quote-card h2{font-size:2.7rem}
+  .quote-rule{margin-top:14px}
+  .form-section{padding:16px 0}
+  .form-section-title{margin-bottom:11px}
+  .quote-card .field input,.quote-card .field textarea,.quote-card .field select{padding:9px 2px}
+  .quote-card .field textarea{min-height:76px}
+  .quote-submit{padding-top:16px}
+}
